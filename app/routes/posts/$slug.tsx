@@ -1,9 +1,10 @@
 import { useLoaderData } from 'remix';
 import type { LoaderFunction, HeadersFunction } from 'remix';
 import { Post } from 'types/post';
-import { load } from '~/lib/datoCMS.server';
+import { client } from '~/lib/datoCMS.server';
+import {  gql } from 'graphql-request'
 
-const GET_POST_QUERY = `query Post($slug: String) {
+const GET_POST_QUERY = gql`query Post($slug: String) {
   post(filter: { slug: { eq: $slug } }) {
     slug
     title
@@ -11,10 +12,7 @@ const GET_POST_QUERY = `query Post($slug: String) {
 }`;
 export const loader: LoaderFunction = async ({ params: { slug } }) => {
   if (!slug) throw Error('Expected slug');
-  return load({
-    query: GET_POST_QUERY,
-    variables: { slug },
-  });
+  return client.request(GET_POST_QUERY, { slug });
 };
 
 const CACHE_TIME = 60 * 60;

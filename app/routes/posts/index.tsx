@@ -1,9 +1,10 @@
 import { Link, useLoaderData } from 'remix';
 import type { LoaderFunction, HeadersFunction } from 'remix';
-import { load } from '~/lib/datoCMS.server';
+import {  gql } from 'graphql-request'
 import { Post } from 'types/post';
+import { client } from '~/lib/datoCMS.server';
 
-const POSTS_QUERY = `{
+const POSTS_QUERY = gql`{
   posts: allPosts {
     id
     title
@@ -14,11 +15,9 @@ const POSTS_QUERY = `{
     _firstPublishedAt
   }
 }`;
+
 export const loader: LoaderFunction = async () => {
-  return load({
-    query: POSTS_QUERY,
-    variables: { limit: 10 },
-  });
+  return client.request(POSTS_QUERY);
 };
 
 const CACHE_TIME = 60 * 60;
