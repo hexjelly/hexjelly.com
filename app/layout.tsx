@@ -1,12 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import Head from "next/head";
 import { twJoin } from "tailwind-merge";
 import NavBar from "./components/nav-bar/nav-bar";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1.0,
+};
 
 export const metadata: Metadata = {
 	title: "hexjelly.com",
@@ -20,9 +24,6 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<Head>
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			</Head>
 			<link rel="icon" href="favicon.svg" />
 			<body
 				className={twJoin(
