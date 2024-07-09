@@ -1,54 +1,32 @@
+import Image from "next/image";
+import { ExperienceList } from "./components/experience-list";
 import { Header } from "./components/header";
 import { PositionItem } from "./components/position-item";
 import { experiences, volunteering } from "./data/experiences";
-import { personal } from "./data/personal";
+import { description, personal } from "./data/personal";
 import { skills } from "./data/skills";
 
 export default function CV() {
 	return (
 		<>
-			<Header {...personal} />
-			<main>
-				<section>Hello</section>
-
+			<Header {...personal} className="mb-4" />
+			<main className="flex flex-col gap-4">
 				<section>
-					<h2>Experience</h2>
-					<ol>
-						{experiences.map((experience) => (
-							<li key={experience.placeName}>
-								<ol>
-									{experience.positions.map((position, index) => (
-										<li key={`${experience.placeName}-${index}`}>
-											<PositionItem {...position} />
-										</li>
-									))}
-								</ol>
-							</li>
-						))}
-					</ol>
+					<p className="text-sm">{description}</p>
 				</section>
 
 				<section>
-					<h2>Volunteering</h2>
-					<ol>
-						{volunteering.map((experience) => (
-							<li key={experience.placeName}>
-								<ol>
-									{experience.positions.map((position, index) => (
-										<li key={`${experience.placeName}-${index}`}>
-											<PositionItem {...position} />
-										</li>
-									))}
-								</ol>
-							</li>
-						))}
-					</ol>
+					<ExperienceList experiences={experiences} title="Work experience" />
+				</section>
+
+				<section>
+					<ExperienceList experiences={volunteering} title="Volunteering" />
 				</section>
 			</main>
 
-			<footer>
-				<h2>Skills</h2>
-				<ul className="flex gap-4 flex-wrap">
+			<footer className="mt-4">
+				<h2 className="text-lg font-medium">Skills</h2>
+				<ul className="flex gap-x-3 flex-wrap text-sm">
 					{skills.map((skill) => (
 						<li key={skill}>{skill}</li>
 					))}

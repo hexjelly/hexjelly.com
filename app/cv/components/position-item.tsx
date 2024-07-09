@@ -11,7 +11,7 @@ export function PositionItem({
 	return (
 		<>
 			<h3>{position}</h3>
-			{description}
+			<div className="text-sm">{description}</div>
 		</>
 	);
 }
