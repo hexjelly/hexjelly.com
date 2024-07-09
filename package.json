@@ -11,6 +11,7 @@
 		"pre-build": "npx tsx ./scripts/generate-cv-pdf.ts"
 	},
 	"dependencies": {
+		"lucide-react": "^0.403.0",
 		"next": "14.2.4",
 		"next-themes": "^0.3.0",
 		"react": "^18",

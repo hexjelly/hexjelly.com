@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import { Inter } from "next/font/google";
 import { twJoin } from "tailwind-merge";
-import NavBar from "./components/nav-bar/nav-bar";
+
+import { NavBar } from "@/components";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,8 +24,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
+		// suppressHydrationWarning: ThemeProvider changing DOM
 		<html lang="en" suppressHydrationWarning>
-			<link rel="icon" href="favicon.svg" />
 			<body
 				className={twJoin(
 					inter.className,

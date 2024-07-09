@@ -28,6 +28,9 @@ const gotoWithRetries = async (
 	}
 };
 
+/**
+ * Start next dev server, use Playwright to go to /cv page and print it to PDF file.
+ */
 (async () => {
 	// Start Next.js development server
 	const nextDevProcess = spawn("npm", ["run", "dev"], { stdio: "inherit" });

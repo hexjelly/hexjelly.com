@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import ThemeSwitcher from "../theme-switcher/theme-switcher";
 
-export default function NavBar() {
+import { ThemeSwitcher } from "@/components/theme-switcher";
+
+export function NavBar() {
 	return (
 		<nav className="flex gap-8 items-center p-4">
 			<ul className="flex gap-6 items-center">

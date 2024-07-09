@@ -8,7 +8,7 @@ export type ThemeSwitcherProps = Omit<
 	"onChange" | "value" | "children"
 >;
 
-function ThemeSwitcher(props: ThemeSwitcherProps) {
+export function ThemeSwitcher(props: ThemeSwitcherProps) {
 	const [mounted, setMounted] = useState(false);
 	const { theme, setTheme } = useTheme();
 
@@ -29,5 +29,3 @@ function ThemeSwitcher(props: ThemeSwitcherProps) {
 		</select>
 	);
 }
-
-export default ThemeSwitcher;
